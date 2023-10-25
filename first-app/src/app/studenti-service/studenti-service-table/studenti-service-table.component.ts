@@ -17,4 +17,8 @@ export class StudentiServiceTableComponent implements OnInit {
     this.studenti = this.studentiService.studenti;
   }
 
+  eliminaStudente(index: number): void {
+    this.studentiService.delete(index);
+  }
+
 }

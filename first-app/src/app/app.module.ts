@@ -14,6 +14,8 @@ import { StudenteOutChildComponent } from './studente/studente-out-child/student
 import { StudentiServiceContainerComponent } from './studenti-service/studenti-service-container/studenti-service-container.component';
 import { StudentiServiceTableComponent } from './studenti-service/studenti-service-table/studenti-service-table.component';
 import { StudentiServiceFormComponent } from './studenti-service/studenti-service-form/studenti-service-form.component';
+import { ObservableContainerComponent } from './observable/observable-container/observable-container.component';
+import { ObserverComponent } from './observable/observer/observer.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import { StudentiServiceFormComponent } from './studenti-service/studenti-servic
     StudenteOutChildComponent,
     StudentiServiceContainerComponent,
     StudentiServiceTableComponent,
-    StudentiServiceFormComponent
+    StudentiServiceFormComponent,
+    ObservableContainerComponent,
+    ObserverComponent
   ],
   imports: [
     BrowserModule,
