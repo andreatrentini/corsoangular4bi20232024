@@ -11,6 +11,9 @@ import { OutChildComponent } from './child-parent-example/out-child/out-child.co
 import { StudenteParentComponent } from './studente/studente-parent/studente-parent.component';
 import { StudenteInChildComponent } from './studente/studente-in-child/studente-in-child.component';
 import { StudenteOutChildComponent } from './studente/studente-out-child/studente-out-child.component';
+import { StudentiServiceContainerComponent } from './studenti-service/studenti-service-container/studenti-service-container.component';
+import { StudentiServiceTableComponent } from './studenti-service/studenti-service-table/studenti-service-table.component';
+import { StudentiServiceFormComponent } from './studenti-service/studenti-service-form/studenti-service-form.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +25,10 @@ import { StudenteOutChildComponent } from './studente/studente-out-child/student
     OutChildComponent,
     StudenteParentComponent,
     StudenteInChildComponent,
-    StudenteOutChildComponent
+    StudenteOutChildComponent,
+    StudentiServiceContainerComponent,
+    StudentiServiceTableComponent,
+    StudentiServiceFormComponent
   ],
   imports: [
     BrowserModule,
