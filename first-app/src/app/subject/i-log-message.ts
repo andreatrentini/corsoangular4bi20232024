@@ -1,2 +1,4 @@
-export interface ILogMessage {
+export interface ILogMessage {    
+    message: string;
+    date: Date;
 }
