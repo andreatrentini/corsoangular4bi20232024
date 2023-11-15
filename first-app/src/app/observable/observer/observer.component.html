@@ -1,1 +1,10 @@
-<p>observer works!</p>
+<h2>Observer</h2>
+<div>
+    <button (click)="osserva()">Inizia ad osservare</button>
+</div>
+<p>{{stato}}</p>
+<div>
+    <ul>
+        <li *ngFor="let numero of numeri">{{numero}}</li>
+    </ul>
+</div>

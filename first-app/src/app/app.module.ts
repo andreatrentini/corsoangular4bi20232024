@@ -16,6 +16,10 @@ import { StudentiServiceTableComponent } from './studenti-service/studenti-servi
 import { StudentiServiceFormComponent } from './studenti-service/studenti-service-form/studenti-service-form.component';
 import { ObservableContainerComponent } from './observable/observable-container/observable-container.component';
 import { ObserverComponent } from './observable/observer/observer.component';
+import { LogEmitterComponent } from './subject/log-emitter/log-emitter.component';
+import { SubjectContainerComponent } from './subject/subject-container/subject-container.component';
+import { ReceiverAComponent } from './subject/receiver-a/receiver-a.component';
+import { ReceiverBComponent } from './subject/receiver-b/receiver-b.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +36,11 @@ import { ObserverComponent } from './observable/observer/observer.component';
     StudentiServiceTableComponent,
     StudentiServiceFormComponent,
     ObservableContainerComponent,
-    ObserverComponent
+    ObserverComponent,
+    LogEmitterComponent,
+    SubjectContainerComponent,
+    ReceiverAComponent,
+    ReceiverBComponent
   ],
   imports: [
     BrowserModule,
