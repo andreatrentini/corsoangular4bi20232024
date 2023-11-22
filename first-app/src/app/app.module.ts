@@ -22,6 +22,8 @@ import { SubjectContainerComponent } from './subject/subject-container/subject-c
 import { ReceiverAComponent } from './subject/receiver-a/receiver-a.component';
 import { ReceiverBComponent } from './subject/receiver-b/receiver-b.component';
 import { AirportTableComponent } from './httpclient/airport-table/airport-table.component';
+import { ArtistListComponent } from './spotify/artist-list/artist-list.component';
+import { SpotifyContainerComponent } from './spotify/spotify-container/spotify-container.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +45,9 @@ import { AirportTableComponent } from './httpclient/airport-table/airport-table.
     SubjectContainerComponent,
     ReceiverAComponent,
     ReceiverBComponent,
-    AirportTableComponent
+    AirportTableComponent,
+    ArtistListComponent,
+    SpotifyContainerComponent
   ],
   imports: [
     BrowserModule,
