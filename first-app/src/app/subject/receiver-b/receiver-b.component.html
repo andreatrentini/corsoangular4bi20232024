@@ -1,1 +1,14 @@
-<p>receiver-b works!</p>
+<h2>Receiver B</h2>
+<p *ngIf="logMessage; else noMessaggi">{{logMessage.toString}}</p>
+<ng-template #noMessaggi>
+    <p>Nessun messaggio</p>
+</ng-template>
+<p>
+    <button (click)="getAllLogs()">Ottieni tutti i log</button>
+</p>
+<div *ngIf="logMessages">
+    <h3>Tutti i log</h3>
+    <ul>
+        <li *ngFor="let log of logMessages">{{log.toString}}</li>
+    </ul>
+</div>

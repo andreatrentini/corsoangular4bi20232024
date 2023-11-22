@@ -1,1 +1,9 @@
-<p>receiver-a works!</p>
+<h2>Receiver A</h2>
+<p *ngIf="logMessage; else noMessaggi">{{logMessage.toString}}</p>
+<ng-template #noMessaggi>
+    <p>Nessun messaggio</p>
+</ng-template>
+<p>
+    <button (click)="save()">Salva i messaggi</button>
+    <button (click)="delete()">Elimina tutti i messaggi</button>
+</p>
