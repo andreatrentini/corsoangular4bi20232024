@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule  } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { MessaggiComponent } from './messaggi/messaggi.component';
@@ -20,6 +21,7 @@ import { LogEmitterComponent } from './subject/log-emitter/log-emitter.component
 import { SubjectContainerComponent } from './subject/subject-container/subject-container.component';
 import { ReceiverAComponent } from './subject/receiver-a/receiver-a.component';
 import { ReceiverBComponent } from './subject/receiver-b/receiver-b.component';
+import { AirportTableComponent } from './httpclient/airport-table/airport-table.component';
 
 @NgModule({
   declarations: [
@@ -40,11 +42,13 @@ import { ReceiverBComponent } from './subject/receiver-b/receiver-b.component';
     LogEmitterComponent,
     SubjectContainerComponent,
     ReceiverAComponent,
-    ReceiverBComponent
+    ReceiverBComponent,
+    AirportTableComponent
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
