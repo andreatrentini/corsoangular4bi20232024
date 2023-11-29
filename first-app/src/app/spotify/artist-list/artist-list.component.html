@@ -1,1 +1,18 @@
-<p>artist-list works!</p>
+<div class="input-group mb-3">
+    <input type="text" class="form-control" placeholder="Artist's name" aria-label="Artist's name"
+        aria-describedby="button-addon2" #artistName>
+    <button class="btn btn-outline-secondary" type="button" id="button-addon2"
+        (click)="search(artistName)">Search</button>
+</div>
+<ul class="list-group" *ngIf="artists">
+    <li class="list-group-item d-flex " *ngFor="let artist of artists">
+        <div class="ms-2 flex-shrink-0" *ngIf="artist.images.length > 0">
+          <img [src]="artist.images[0].url" [alt]="artist.name" class="rounded img-thumbnail" width="160" height="160">
+        </div>
+        <div class="ms-3 flex-grow-1 ms-3 justify-content-between align-items-start">
+          <div class="fw-bold">{{artist.name}}</div>
+          <span *ngFor="let genre of artist.genres">{{genre}}, </span>
+        </div>
+        <span class="badge bg-primary rounded-pill">{{artist.popularity}}</span>
+    </li>
+</ul>

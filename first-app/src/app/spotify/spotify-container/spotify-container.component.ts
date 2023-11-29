@@ -8,22 +8,15 @@ import { IToken } from '../i-token';
   templateUrl: './spotify-container.component.html',
   styleUrls: ['./spotify-container.component.css']
 })
-export class SpotifyContainerComponent implements OnInit, OnDestroy {
-
-  tokenObserver: any;
+export class SpotifyContainerComponent implements OnInit, OnDestroy {  
 
   constructor(private spotifyService: SpotifyService) { }
 
   ngOnInit(): void {
-    this.spotifyService.getToken();
-    this.tokenObserver = this.spotifyService.tokenObservable.subscribe((data: IToken) => {
-      interval((data.expires_in - 100) * 1000).subscribe(() => {
-        this.spotifyService.getToken();
-      });
-    });   
+    this.spotifyService.getToken();    
   }
 
   ngOnDestroy(): void {
-    this.tokenObserver.unsubscribe();
+    
   }
 }
