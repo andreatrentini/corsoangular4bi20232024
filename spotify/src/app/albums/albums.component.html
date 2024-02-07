@@ -1,5 +1,11 @@
-<p>albums works!</p>
-<button (click)="cambiaArtista('1')">Artista 1</button>
-<button (click)="cambiaArtista('2')">Artista 2</button>
-<button (click)="cambiaArtista('3')">Artista 3</button>
-<button (click)="cambiaArtista('4')">Artista 4</button>
+@if(artist) {
+    <h2 class="display-2">
+        {{artist.name}}
+    </h2>
+    <app-albums-card-grid [albumList]="albums"></app-albums-card-grid>
+}
+@else {
+    <h2 class="display-2">
+        Artist not found
+    </h2>
+}

@@ -30,23 +30,23 @@ export class SpotifyService {
   getToken(): void {
     let headers = new HttpHeaders()
       .set('Content-Type', 'application/x-www-form-urlencoded');
-      
+
     let body = new HttpParams()
       .set('grant_type', 'client_credentials')
       .set('client_id', this.clientId)
       .set('client_secret', this.clientSecret);
-    
+
     let url = 'https://accounts.spotify.com/api/token';
 
-    this.httpClient.post<IToken>(url, body.toString(), {headers: headers}).subscribe((dati: IToken) => {
-      this.token = {...dati, authorization: dati.token_type + ' ' + dati.access_token};
+    this.httpClient.post<IToken>(url, body.toString(), { headers: headers }).subscribe((dati: IToken) => {
+      this.token = { ...dati, authorization: dati.token_type + ' ' + dati.access_token };
       this.subjectToken.next(true);
 
       //this.token.authorization = 'Bearer ' + this.token.access_token;
 
       if (this.firstToken) {
         this.firstToken = false;
-        interval((this.token.expires_in -5) * 1000).subscribe(() => {
+        interval((this.token.expires_in - 5) * 1000).subscribe(() => {
           this.getToken();
         })
       }
@@ -64,24 +64,24 @@ export class SpotifyService {
     let url = 'https://api.spotify.com/v1/search?q=' + name + '&type=artist';
 
     let headers = new HttpHeaders()
-      .set('Authorization', this.token.authorization )
+      .set('Authorization', this.token.authorization)
 
-    return this.httpClient.get(url, {headers: headers});
+    return this.httpClient.get(url, { headers: headers });
 
   }
 
   getArtistAlbums(artistId: string): Observable<any> {
-/*     curl --request GET \
-  --url https://api.spotify.com/v1/artists/0TnOYISbd1XYRBk9myaseg/albums \
-  --header 'Authorization: Bearer 1POdFZRZbvb...qqillRxMr2z'
- */  
+    /*     curl --request GET \
+      --url https://api.spotify.com/v1/artists/0TnOYISbd1XYRBk9myaseg/albums \
+      --header 'Authorization: Bearer 1POdFZRZbvb...qqillRxMr2z'
+     */
 
-  let url = 'https://api.spotify.com/v1/artists/' + artistId + '/albums';
+    let url = 'https://api.spotify.com/v1/artists/' + artistId + '/albums';
 
     let headers = new HttpHeaders()
-      .set('Authorization', this.token.authorization )
+      .set('Authorization', this.token.authorization)
 
-    return this.httpClient.get(url, {headers: headers});
+    return this.httpClient.get(url, { headers: headers });
 
-}
+  }
 }

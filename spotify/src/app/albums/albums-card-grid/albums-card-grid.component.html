@@ -1,1 +1,10 @@
-<p>albums-card-grid works!</p>
+<div class="row row-cols-1 row-cols-md-3 g-4">
+
+    @for(album of albumList; track albumList) {
+        @if(album.images.length > 0) {
+            <div class="col mt-3">
+                <app-albums-card [album]="album"></app-albums-card>
+            </div>
+        }
+    }
+</div>
