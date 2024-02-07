@@ -70,4 +70,18 @@ export class SpotifyService {
 
   }
 
+  getArtistAlbums(artistId: string): Observable<any> {
+/*     curl --request GET \
+  --url https://api.spotify.com/v1/artists/0TnOYISbd1XYRBk9myaseg/albums \
+  --header 'Authorization: Bearer 1POdFZRZbvb...qqillRxMr2z'
+ */  
+
+  let url = 'https://api.spotify.com/v1/artists/' + artistId + '/albums';
+
+    let headers = new HttpHeaders()
+      .set('Authorization', this.token.authorization )
+
+    return this.httpClient.get(url, {headers: headers});
+
+}
 }

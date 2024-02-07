@@ -1,6 +1,8 @@
+<app-navbar></app-navbar>
 <div class="container mt-5">
     @if(tokenOK) {
-        <app-artist></app-artist>
+        <!-- <app-artist></app-artist> -->
+        <router-outlet></router-outlet>
     }
     @else {
         <div class="alert alert-danger" role="alert">

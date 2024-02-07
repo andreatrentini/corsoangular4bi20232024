@@ -1,12 +1,13 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { SpotifyService } from '../services/spotify.service';
 import { Subscription } from 'rxjs';
-import { ArtistComponent } from '../artist/artist.component';
+import { RouterOutlet } from '@angular/router';
+import { NavbarComponent } from '../navbar/navbar.component';
 
 @Component({
   selector: 'app-main',
   standalone: true,
-  imports: [ArtistComponent],
+  imports: [RouterOutlet, NavbarComponent],
   templateUrl: './main.component.html',
   styleUrl: './main.component.css'
 })
