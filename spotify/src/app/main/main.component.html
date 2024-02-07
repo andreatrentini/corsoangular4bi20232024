@@ -1,1 +1,10 @@
-<p>main works!</p>
+<div class="container mt-5">
+    @if(tokenOK) {
+        <app-artist></app-artist>
+    }
+    @else {
+        <div class="alert alert-danger" role="alert">
+            Impossibile ottenere il token da spotify.
+        </div>
+    }
+</div>

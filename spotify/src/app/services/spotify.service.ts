@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { IToken } from '../interfaces/i-token';
-import { Observable, interval } from 'rxjs';
+import { Observable, Subject, interval } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +14,17 @@ export class SpotifyService {
   private token!: IToken;
 
   private firstToken: boolean = true;
-  
+
+  // Subject m i consente di emettere valori in maniera asincrona per chi si mette in ascolto
+  // E' sempre consigliabile definire i Subject in modo private per impedire ad altri servizi/componenti
+  // di invocare il metodo next() in modo non consentito
+  // Solo il servizio Spotify deve poter emettere un avviso che il token è arrivato.
+  private subjectToken = new Subject<boolean>();
+
+  // il motodo asObservable() restituisce un observable che i componenti/servizi potranno osservare
+  // per sapere se Subject ha eseguito il metodo next: il token è arrivato.
+  public tokenArrived = this.subjectToken.asObservable();
+
   constructor(private httpClient: HttpClient) { }
 
   getToken(): void {
@@ -30,7 +40,8 @@ export class SpotifyService {
 
     this.httpClient.post<IToken>(url, body.toString(), {headers: headers}).subscribe((dati: IToken) => {
       this.token = {...dati, authorization: dati.token_type + ' ' + dati.access_token};
-      
+      this.subjectToken.next(true);
+
       //this.token.authorization = 'Bearer ' + this.token.access_token;
 
       if (this.firstToken) {

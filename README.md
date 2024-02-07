@@ -48,3 +48,21 @@ ng serve
 ```
 nome: tipo = valore
 ```
+
+## Come usare bootstrap per l'applicazione
+### 1.
+```
+npm install bootstrap
+```
+### 2.
+Modifico il file angular.json (si trova nella directory principale del progetto, ed aggiungo
+queste due righe a styles e scripts)
+```
+            "styles": [
+              "./node_modules/boostrap/dist/css/bootstrap.css",
+              "src/styles.css"
+            ],
+            "scripts": [
+              "./node_modules/bootstrap/dist/js/bootstrap.bundle.js"
+            ]
+```
