@@ -1,0 +1,36 @@
+
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-6">
+      @if(errorMessage) {
+        <div class="alert alert-danger" role="alert">
+          {{errorMessage}}
+        </div>
+      }
+      <form class="needs-validation" [formGroup]="loginForm">
+        <div class="mb-3 col">
+          <label for="inputUsername" class="form-label">Username</label>
+          <input type="text" class="form-control" id="inputUsername" #inputUsername placeholder="Username..." formControlName="username" 
+          [class.is-invalid]="!loginForm.controls['username'].valid && loginForm.controls['username'].touched"
+          autocomplete="username">          
+            <div class="invalid-feedback">Username required!</div>          
+        </div>
+        <div class="mb-3 col">
+          <label for="inputPassword" class="form-label">Password</label>
+          <input type="password" class="form-control" id="inputPassword" placeholder="Password..." formControlName="password"
+          [class.is-invalid]="!loginForm.controls['password'].valid && loginForm.controls['password'].touched"
+          autocomplete="current-password">
+          <div class="invalid-feedback">Password cannot be empty.</div>
+        </div>
+        <div class="row justify-content-center mt-5">
+          <div class="col-2">
+            <button type="button" class="btn btn-primary btn-block form-control" [disabled]="!loginForm.valid" (click)="login()">Login</button>
+          </div>
+          <div class="col-2">
+            <button type="button" class="btn btn-secondary btn-block form-control" (click)="cancel()">Cancel</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
