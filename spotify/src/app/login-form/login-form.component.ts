@@ -44,8 +44,8 @@ export class LoginFormComponent implements OnInit, OnDestroy {
   }
 
   login(): void {
-    if (this.loginForm.value.username && this.loginForm.value.password) {
-      this.authService.login(this.loginForm.value.username, this.loginForm.value.password);
+    if (this.loginForm.value) {
+      this.authService.login(this.loginForm.value);
     }
 
   }

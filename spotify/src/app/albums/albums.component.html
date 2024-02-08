@@ -1,11 +1,13 @@
-@if(artist) {
-    <h2 class="display-2">
-        {{artist.name}}
-    </h2>
-    <app-albums-card-grid [albumList]="albums"></app-albums-card-grid>
-}
-@else {
-    <h2 class="display-2">
-        Artist not found
-    </h2>
-}
+<div class="container mt-5">
+    @if(artist) {
+        <h2 class="display-2">
+            {{artist.name}}
+        </h2>
+        <app-albums-card-grid [albumList]="albums"></app-albums-card-grid>
+    }
+    @else {
+        <h2 class="display-2">
+            Artist not found
+        </h2>
+    }
+</div>

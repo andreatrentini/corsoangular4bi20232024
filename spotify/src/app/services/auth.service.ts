@@ -18,8 +18,8 @@ export class AuthService {
 
   constructor(private router: Router) { }
 
-  login(username: string, password: string) {
-    if (username == 'admin' && password == 'cisco') {
+  login(credentials: any) {
+    if (credentials.username == 'admin' && credentials.password == 'cisco') {
       localStorage.setItem('token-bearer', '123456789');
       this.isLoggedIn = true;
       this.loginSubject.next(true);
