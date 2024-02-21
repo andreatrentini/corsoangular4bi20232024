@@ -1,0 +1,31 @@
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-6">
+            <form class="needs-validation" [formGroup]="loginForm">
+                <div class="mb-3 col">
+                    <label for="inputUsername" class="form-label">Username</label>
+                    <input type="text" class="form-control" placeholder="username..." 
+                    formControlName="username" autocomplete="username"
+                    [class.is-invalid]="!loginForm.controls['username'].valid && loginForm.controls['username'].touched">
+                    <div class="invalid-feedback">Username required!</div>
+                </div>
+                <div class="mb-3 col">
+                    <label for="inputPassword" class="form-label">Password</label>
+                    <input type="password" class="form-control" placeholder="password..." 
+                    formControlName="password" autocomplete="current-password"
+                    [class.is-invalid]="!loginForm.controls['password'].valid && loginForm.controls['password'].touched">
+                    <div class="invalid-feedback">Password cannot be empty!</div>
+                </div>
+                <div class="row justify-content-center mt-5">
+                    <div class="col-sm-3 mt-3">
+                        <button type="button" class="btn btn-primary btn-block form-control"
+                        [disabled]="!loginForm.valid">Login</button>
+                    </div>
+                    <div class="col-sm-3 mt-3">
+                        <button type="button" class="btn btn-secondary btn-block form-control">Cancel</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
