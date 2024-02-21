@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { AuthService } from '../services/auth.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-navbar',
@@ -8,6 +10,25 @@ import { RouterLink } from '@angular/router';
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.css'
 })
-export class NavbarComponent {
-  artistId = 'dfhsdfdk678sh';
+export class NavbarComponent implements OnInit, OnDestroy {
+
+  isLoggedIn: boolean = false;
+  loggedInObserver!: Subscription;
+
+  constructor(private authService: AuthService) {}
+
+  ngOnInit(): void {
+    this.loggedInObserver = this.authService.loggedInObs.subscribe(loggedIn => {
+      this.isLoggedIn = loggedIn;
+    })
+  }
+
+  ngOnDestroy(): void {
+    this.loggedInObserver.unsubscribe();
+  }
+
+  logout(): void {
+    this.authService.logout();
+  }
+
 }

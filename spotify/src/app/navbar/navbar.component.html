@@ -12,6 +12,14 @@
           <li class="nav-item">
             <a class="nav-link" routerLink="artists">Artists</a>
           </li>
+          <li class="nav-item">
+          @if(!isLoggedIn) {
+              <a class="nav-link" routerLink="login">Login</a>
+            }
+            @else {
+              <button class="nav-link" (click)="logout()">Logout</button>    
+            }
+          </li>
           <!-- <li class="nav-item">
             <a class="nav-link" [routerLink]="['albums', artistId]">Albums</a>
           </li> -->          
