@@ -11,10 +11,9 @@ import { Subscription, timer } from 'rxjs';
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
-export class LoginComponent implements OnInit, OnDestroy, AfterViewInit {
+export class LoginComponent implements AfterViewInit {
 
-  loginErrorMessage!: string;
-  loginErrorMessageObserver!: Subscription;
+  loginErrorMessage!: string;  
 
   @ViewChild('inputUsername') username!: ElementRef;
 
@@ -25,19 +24,6 @@ export class LoginComponent implements OnInit, OnDestroy, AfterViewInit {
     password: new FormControl('', [Validators.required, Validators.minLength(8)])
   })
 
-  ngOnInit(): void {
-    this.loginErrorMessageObserver = this.authService.loginErrorMessageObs.subscribe(errorMessage => {
-      this.loginErrorMessage = errorMessage;
-      timer(3000).subscribe(() => {
-        this.loginErrorMessage = '';
-      })
-    })
-  }
-
-  ngOnDestroy(): void {
-    this.loginErrorMessageObserver.unsubscribe();
-  }
-
   ngAfterViewInit(): void {
     this.username.nativeElement.focus();
   }
@@ -47,6 +33,12 @@ export class LoginComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   login(): void {
-    this.authService.login(this.loginForm.value);
+    let msg = this.authService.login(this.loginForm.value);
+    if (msg) {
+      this.loginErrorMessage = msg;
+      timer(3000).subscribe(() => {
+        this.loginErrorMessage = ''
+      })
+    }
   }
 }

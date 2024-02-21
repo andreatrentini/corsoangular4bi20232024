@@ -18,7 +18,7 @@ export class AuthService {
 
   constructor(private router: Router) { }
 
-  login(credentials: any): void {
+  login(credentials: any): string {
     // Sistema fake di autenticazione
     if (credentials.username == 'andrea.trentini@marconirovereto.it' && credentials.password == 'P@ssw0rd')
     {
@@ -27,8 +27,10 @@ export class AuthService {
       this.isLoggedIn = true;
       this.loggedInSubject.next(true);
       this.router.navigate(['']);
+      return '';
     }
     else {
+      return 'Username or password invalid.';
       this.loginErrorMessage.next('Username or password invalid.');
     }
   }
